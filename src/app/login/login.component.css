@@ -1,62 +1,128 @@
-body{
+body {
     font-family: 'Montserrat', sans-serif;
 }
-.register-container {
+
+.login-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 50vh;
 }
-input{
+
+input {
     font-size: large;
 }
 
-.register{
+.login {
     margin: auto;
-    display: grid ;
+    display: grid;
     place-items: center;
-    
+
     height: 100px;
     width: 100vw;
 
     color: #333;
 }
-#name,#password{
-    height: 7.5vh;
-    width: 30vw;
+
+#nombre,
+#pw {
+    height: 40px;
+    width: 500px;
     margin-bottom: 1vh;
 }
-#title{
+
+#title {
     font-size: xx-large;
 }
-#btn-menu{
+
+#btn-menu {
+    border-radius: 20px;
     transition: ease-in-out .3s;
     background-color: white;
     height: 5vh;
     width: 5vw;
 }
-#btn-menu:hover{
+
+#btn-menu:hover {
     color: white;
     background-color: black;
     transition: ease-in-out .3s;
     cursor: pointer;
 }
 
-#btn{
-    height: 7.5vh;
-    width: 30.6vw;
-    font-size: 1.3vw;
-    transition: ease-in-out .3s;
-    margin-bottom: 5vh;
+.btn {
+    height: 40px;
+    width: 200px;
+    float: right;
+    font-size: 20px;
     background-color: white;
+    margin: 55px;
+    margin-top: 10px;
+    margin-bottom: 0;
+
+    border-style: solid;
+
 }
-#btn:hover{
+
+.btn:hover {
     color: white;
     background-color: black;
     transition: ease-in-out .3s;
     cursor: pointer;
 }
-#link{
+
+#link {
     text-decoration: none;
     color: black;
- }
+}
+
+#btn-login {
+    height: 5.5vh;
+    width: 13vw;
+    font-size: 1.3vw;
+    transition: ease-in-out .3s;
+    background-color: white;
+}
+
+#btn-login:hover {
+    color: white;
+    background-color: black;
+    transition: ease-in-out .3s;
+    cursor: pointer;
+}
+
+#error {
+    color: red;
+    font-size: 24px;
+    text-decoration: underline solid red 3px;
+}
+
+@media (max-height: 290px) {
+    #title {
+        margin-top: 0;
+    }
+}
+
+@media (max-height: 240px) {
+
+    #nombre,
+    #pw {
+        margin-bottom: 5px;
+        height: 20px;
+        width: 90vw;
+    }
+
+    .btn {
+        height: 40px;
+        width: 40vw;
+        float: right;
+        font-size: 20px;
+        background-color: white;
+        margin: 5vw;
+        margin-top: 10px;
+        margin-bottom: 0;
+    
+        border-style: solid;
+    
+    }
+}
