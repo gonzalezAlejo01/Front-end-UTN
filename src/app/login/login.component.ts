@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { HttpService } from '../http-service.service';
-import { Router } from '@angular/router';
-import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -9,42 +8,31 @@ import { jwtDecode } from 'jwt-decode';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  error: String
-  temp: number
+
+  error: string
 
   constructor(private http: HttpService, private router: Router){
-    this.error=""
-    this.temp = 0
+    this.error = ""
   }
 
-  ngOnInit(){
-    console.log(innerWidth)
-    this.temp = innerHeight
-  }
-
-  public login(nombre: String, pw: String){
-    if(nombre == "" || pw == ""){
-      this.error = "Faltan datos"
-      return 0
-    }
+  public login(nombre: string, contraseña: string){
     var cuerpo = {
-      nombre: nombre,
-      contraseña: pw
+      nombre : nombre,
+      contraseña : contraseña
     }
     return this.http.login(cuerpo).subscribe({
-      next: (data) =>{
+      next: (data) => {
         console.log(data)
         localStorage.setItem("clave", JSON.parse(JSON.stringify(data)).claveJWT)
-        let token = jwtDecode(localStorage.getItem("clave")!) as {nombre : string}
-        let nombreUsuario = token['nombre']
-        localStorage.setItem("nombreUsuario", nombreUsuario)
-        //localStorage.setItem("logeadoStr", "t")
+        localStorage.setItem("esSuper", JSON.parse(JSON.stringify(data)).esSuper)
+        localStorage.setItem("nombreUsuario", JSON.parse(JSON.stringify(data)).nombre)
         this.router.navigate([""])
       },
-      error: (error)=>{
+      error: (error) => {
         console.log(error)
-        this.error = "Error: " + error.error
+        this.error = error.error
       }
-    })
+    });
   }
+
 }

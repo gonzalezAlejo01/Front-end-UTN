@@ -1,34 +1,22 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MenuComponent } from './menu/menu.component';
-import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { EventoComponent } from './evento/evento.component';
-import { UsuarioComponent } from './usuario/usuario.component';
+import { RegisterComponent } from './register/register.component';
 
-const routes: Routes = [
-  {
-    path: "",
-    component: MenuComponent,
-    title: "menu"
-  },
-  {
-    path: "register",
-    component: RegisterComponent,
-    title: "Registro"
-  },{
-    path: "login",
-    component: LoginComponent,
-    title: "Inicio Sesion"
-  },{
-    path: "evento/:nombre",
-    component: EventoComponent
-  },
-  {
-    path: "usuario",
-    component:UsuarioComponent
-  }
-];
+const routes: Routes = [{
+  path: "",
+  component: HomeComponent,
+  title: "Inicio"
+},{
+  path: "registro",
+  component: RegisterComponent,
+  title: "Registro"
+},{
+  path: "login",
+  component: LoginComponent,
+  title: "Inicio de seión"
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -1,42 +1,46 @@
 import { Component } from '@angular/core';
 import { HttpService } from '../http-service.service';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  error: string
 
+  coincidencia: string;
+  error: string;
+  
   constructor(private http: HttpService, private router: Router){
+    this.coincidencia = "";
     this.error = ""
   }
+  
+  public registrarse(nombre: string, correo: string, contraseña: string, contraseña2: string){
 
-
-  public register(mail: string, pw1: string, pw2: string, nombre: string){
-    if(pw1!=pw2){
-      this.error = "Las contraseñas no coinciden"
-      return 0
+    if(contraseña != contraseña2){
+      this.coincidencia = "Las conraseñas no coinciden"
+      return 0;
     }
     else{
+      console.log("a")
+      this.coincidencia = "";
       const cuerpo = {
-        nombre: nombre,
-        correo: mail,
-        contraseña: pw1
+        nombre : nombre,
+        correo  : correo,
+        contraseña : contraseña
       }
-      console.log(cuerpo)
+      console.log("b")
       return this.http.registrarse(cuerpo).subscribe({
-        next: (data)=>{
+        next: (data) => {
           console.log(data)
-          this.router.navigate(["login"])
+          this.router.navigate(["login"]);
         },
-        error: (error) =>{
+        error: (error) => {
           console.log(error)
-          this.error = "Error: " + error.error
+          this.error = error.error;
         }
-      })
+      });
     }
   }
 }

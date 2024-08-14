@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from  '@angular/common/http';
 import { Injectable } from  '@angular/core';
-import { jwtDecode } from 'jwt-decode';
 
 
 @Injectable({
@@ -18,72 +17,62 @@ export class HttpService {
   }
 
   login(cuerpo: any){
-    return this.http.post(this.urlApi + "/login", cuerpo);
+    return this.http.post(this.urlApi + "/LoginAdministrador", cuerpo);
   }
 
-  getEventos(pagina: any){
-    const headers = new HttpHeaders().set("X-pagina", String(pagina))
-    return this.http.get(this.urlApi + "/eventos", {"headers": headers});
+  ingresarUsuario(cuerpo: any){
+    return this.http.post(this.urlApi + "/investigadores", cuerpo, {headers: {Authorization: localStorage["clave"]}});
   }
 
-  getEventosTags(tags: any, pagina:any){
-    const headers = new HttpHeaders().set("X-pagina", String(pagina))
-    return this.http.get(this.urlApi + "/eventosTags/busquedaTags/"+tags, {"headers": headers})
+  borrarUsuario(nombre: any){
+    return this.http.delete(this.urlApi + "/investigadores/" + nombre,{headers: {Authorization: localStorage["clave"]}});
   }
 
-  getTags(){
-    return this.http.get(this.urlApi + "/eventosTags")
+  verUsuarios(){
+    return this.http.get(this.urlApi + "/investigadores",{headers: {Authorization: localStorage["clave"]}});
   }
 
-  getEvento(_id: string){
-    return this.http.get(this.urlApi + "/eventos/" + _id);
+  modificarUsuario(nombre:any, cuerpo: any){
+    return this.http.patch(this.urlApi + "/investigadores/" + nombre, cuerpo, {headers: {Authorization: localStorage["clave"]}});
   }
 
-  postEvento(cuerpo: any, clave: string){
-    const headers = new HttpHeaders().set("Authorization", clave)
-    return this.http.post(this.urlApi + "/eventos", {"headers": headers}, cuerpo);
+  ingresarAdministrador(cuerpo: any){
+    return this.http.post(this.urlApi + "/administradores", cuerpo, {headers: {Authorization: localStorage["clave"]}});
   }
-
-  deleteEvento(nombre: string, clave: string){
-    const headers = new HttpHeaders().set("Authorization", clave)
-    return this.http.delete(this.urlApi + "/eventos/" + nombre, {"headers": headers})
+  borrarAdministrador(nombre: any){
+    return this.http.delete(this.urlApi + "/administradores/" + nombre,{headers: {Authorization: localStorage["clave"]}});
   }
-
-  putEvento(cuerpo: any, nombre: string, clave: string){
-    const headers = new HttpHeaders().set("Authorization", clave);
-    return this.http.put(this.urlApi + "/eventos/" + nombre, {"headers": headers}, cuerpo)
+  getAdministradores(){
+    return this.http.get(this.urlApi + "/administradores",{headers: {Authorization: localStorage["clave"]}});
   }
-
-  patchEvento(cuerpo: any, nombre: string, clave: string){
-    const headers = new HttpHeaders().set("Authorization", clave);
-    return this.http.patch(this.urlApi + "/eventos/" + nombre, {"headers": headers}, cuerpo)
+  ingresarLugar(cuerpo: any){
+    return this.http.post(this.urlApi + "/lugares",cuerpo ,{headers: {Authorization: localStorage["clave"]}});
   }
-
-  getLugarEventoId(idLugar: string){
-    return this.http.get(this.urlApi + "/lugares/" + idLugar)
+  borrarLugar(nombre: any){
+    return this.http.delete(this.urlApi + "/lugares/" + nombre,{headers: {Authorization: localStorage["clave"]}});
   }
-
-  getLugarEventoNombre(nombreLugar: string){
-    return this.http.get(this.urlApi + "/lugaresXnombre/" + nombreLugar)
+  getLugares(){
+    return this.http.get(this.urlApi + "/lugares",{headers: {Authorization: localStorage["clave"]}});
   }
-
-  subirAporte(cuerpo: any, clave: string){
-    const headers = new HttpHeaders().set("Authorization", clave);
-    return this.http.post(this.urlApi + "/eventos/contribucion",cuerpo,{"headers": {"Authorization":clave}})
+  getLugar(id: any){
+    return this.http.get(this.urlApi + "/lugares/" + id,{headers: {Authorization: localStorage["clave"]}});
   }
-
-  getUserData(clave: string, nombreUsuario: string){
-    return this.http.get(this.urlApi + "/investigadoresInv/"+nombreUsuario,{"headers":{"Authorization":clave}})
+  getEventos(){
+    return this.http.get(this.urlApi + "/eventos",{headers: {Authorization: localStorage["clave"]}});
   }
-
-  editarUsuario(cuerpo:any, clave:string){
-    const headers = new HttpHeaders().set("Authorization", clave);
-    console.log("el body")
-    console.log(cuerpo)
-    return this.http.patch(this.urlApi + "/investigadoresEdit", cuerpo, {"headers":{"Authorization":clave}})
+  borrarEvento(id: any){
+    return this.http.delete(this.urlApi + "/eventos/" + id,{headers: {Authorization: localStorage["clave"]}});
   }
-
-  getContribucionesUsuario(clave: string){
-    return this.http.get(this.urlApi+"/eventosAportesUsuario", {"headers":{"Authorization": clave}})
+  postEvento(cuerpo: any){
+    return this.http.post(this.urlApi + "/eventos", cuerpo,{headers: {Authorization: localStorage["clave"]}});
+  }
+  getEvento(id: any){
+    return this.http.get(this.urlApi + "/eventos/" + id,{headers: {Authorization: localStorage["clave"]}});
+  }
+  getLugarXNombre(nombre: any){
+    return this.http.get(this.urlApi + "/lugaresXnombre/" + nombre,{headers: {Authorization: localStorage["clave"]}});
+  }
+  actualizarEstado(id: any, cuerpo: any){
+    return this.http.patch(this.urlApi + "/eventos/estado/" + id, cuerpo,{headers: {Authorization: localStorage["clave"]}});
   }
 }

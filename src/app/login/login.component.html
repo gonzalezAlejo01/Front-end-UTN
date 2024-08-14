@@ -1,24 +1,15 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 <body>
-    <div class="login-container">
-        <div class="login">
+    <button id="btn-menu" routerLink="">Inicio</button>
+    <div class="register-container">
+        <div class="register">
             <p id="title">Inicio de sesión</p>
-            <input id="nombre" #nombre placeholder="Nombre de usuario">
-            <input id="pw" #pw type="password" placeholder="Contraseña">
-            <div>
-                <button style="margin-right: 0;" class="btn" (click)="login(nombre.value,pw.value)">Iniciar sesión</button>
-                <button style="margin-left: 0;" class="btn" routerLink="/register">¿No tenés cuenta?</button>
+            <input #name id="name" placeholder="Nombre">
+            <div class="2">
+                <input #password id="password" placeholder="Contraseña" type="password">
             </div>
-            <p id="error" style="color: red;">{{error}}</p>
+            <button (click)="login(name.value, password.value)" id="btn">Iniciar sesión</button>
+            <p style="color: red;">{{error}}</p>
         </div>
+
     </div>
 </body>
-</html>
