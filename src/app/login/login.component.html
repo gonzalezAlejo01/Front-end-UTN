@@ -1,0 +1,15 @@
+<body>
+    <button id="btn-menu" routerLink="">Inicio</button>
+    <div class="register-container">
+        <div class="register">
+            <p id="title">Inicio de sesión</p>
+            <input #name id="name" placeholder="Nombre">
+            <div class="2">
+                <input #password id="password" placeholder="Contraseña" type="password">
+            </div>
+            <button (click)="login(name.value, password.value)" id="btn">Iniciar sesión</button>
+            <p style="color: red;">{{error}}</p>
+        </div>
+
+    </div>
+</body>

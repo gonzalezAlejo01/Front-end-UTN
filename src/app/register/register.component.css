@@ -1,0 +1,69 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+input{
+    font-size: large;
+}
+
+.register{
+    margin: auto;
+    display: grid ;
+    place-items: center;
+    
+    height: 100px;
+    width: 100vw;
+
+    color: #333;
+}
+#password, #password2{
+    height: 7.5vh;
+    width: 14.5vw;
+    margin: 0.3vh;
+    margin-bottom: 1vh;
+}
+#name,#correo{
+    height: 7.5vh;
+    width: 30vw;
+    margin-bottom: 1vh;
+}
+#title{
+    font-size: xx-large;
+}
+#btn-menu{
+    border-radius: 20px;
+    transition: ease-in-out .3s;
+    background-color: white;
+    height: 5vh;
+    width: 5vw;
+}
+#btn-menu:hover{
+    color: white;
+    background-color: black;
+    transition: ease-in-out .3s;
+    cursor: pointer;
+}
+
+#btn{
+    height: 7.5vh;
+    width: 30.6vw;
+    font-size: 1.3vw;
+    transition: ease-in-out .3s;
+    margin-bottom: 5vh;
+    background-color: white;
+}
+#btn:hover{
+    color: white;
+    background-color: black;
+    transition: ease-in-out .3s;
+    cursor: pointer;
+}
+#link{
+    text-decoration: none;
+    color: black;
+ }

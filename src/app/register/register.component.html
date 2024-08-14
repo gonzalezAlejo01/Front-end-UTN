@@ -1,0 +1,19 @@
+<body>
+    <button id="btn-menu" routerLink="">Inicio</button>
+    <div class="register-container">
+        <div class="register">
+            <p id="title">Registro</p>
+            <input #name id="name" placeholder="Nombre">
+            <input #correo id="correo" placeholder="Correo" type="email">
+            <div class="2">
+                <input #password id="password" placeholder="Contraseña" type="password">
+                <input #password2 id="password2" placeholder="Repetir contraseña" type="password">
+            </div>
+            <button (click)="registrarse(name.value, correo.value, password.value, password2.value)" id="btn">Registrarse</button>
+            <p style="color: red;">{{coincidencia}}</p>
+            <p style="color: red;">{{error}}</p>
+            <a id="link" routerLink="/login">¿Ya tenés cuenta?</a>
+        </div>
+
+    </div>
+</body>
