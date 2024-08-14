@@ -1,0 +1,51 @@
+<app-navbar></app-navbar>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+<div class="dataPerfil">
+    <img src="{{fotoPerfil}}" class="fotoPerfil">
+    <div class="descPerfil">
+        <div class="containerInfo">
+            <p id="nombre"><mat-icon>account_circle</mat-icon></p>
+            <p class="infoPerfil">{{usuario.nombre}}</p>
+        </div>
+        <div class="containerInfo">
+            <p id="correo"><mat-icon> email</mat-icon></p>
+            <p class="infoPerfil">{{usuario.correo}}</p>
+        </div>
+        <div class="containerInfo inputInfo">
+            <input *ngIf="editar" class="infoPerfil input" #pwModificar placeholder="Nueva contraseña">
+        </div>
+        <p style="color:red" class="error" *ngIf="editar">{{error}}</p>
+
+        <div class="containerInfo inputInfo">
+            <input class="input" *ngIf="editar" (change)="onProfilePhotoSelected($event)" type="file" title="Elija una imagen" />
+        </div>
+
+        <mat-icon class="iconoEditarPerfil input" (click)="verEdicion(true)" *ngIf="!editar">edit</mat-icon>
+        <mat-icon class="iconoEditarPerfil input" (click)="verEdicion(false)" *ngIf="editar">cancel</mat-icon>
+        <mat-icon class="iconoEditarPerfil input" (click)="modificarUsuario()" *ngIf="editar">done</mat-icon>
+    </div>
+    <mat-icon class="iconoEditarPerfilRes" (click)="verEdicion(true)" *ngIf="!editar">edit</mat-icon>
+</div>
+<div class="inputsRes">
+    <input *ngIf="editar" class="infoPerfilRes inputRes" #pwModificarRes placeholder="Nueva contraseña">
+    <input class="inputRes" *ngIf="editar" (change)="onProfilePhotoSelected($event)" type="file" title="Elija una imagen" />
+    <mat-icon class="iconoEditarPerfilRes" (click)="verEdicion(false)" *ngIf="editar">cancel</mat-icon>
+    <mat-icon class="iconoEditarPerfilRes" (click)="modificarUsuario()" *ngIf="editar">done</mat-icon>
+    <p style="color:red" class="errorRes" *ngIf="editar">{{error}}</p>
+</div>
+
+<p class="titulo">Tus aportes</p>
+<div class="publicaciones">
+    <div *ngFor="let item of aportesUsuario; let i = index" [attr.data-index]="i" class="item">
+        <a class="publicacion" [routerLink]="['../','publicacion', aportesUsuario[i].id]">
+            <div class="texto">
+                <p class="tItem">{{aportesUsuario[i].titulo}}</p>
+                <p class="dItem">{{aportesUsuario[i].descripcion}}</p>
+                <p class="arItem">Archivo: {{aportesUsuario[i].contribucion}}</p>
+                <p class="eItem">Estado: {{aportesUsuario[i].estado}}</p>
+            </div>
+        </a>
+    </div>
+</div>

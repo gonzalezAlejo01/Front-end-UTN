@@ -1,0 +1,180 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'segoe ui';
+    background-color: #f2f2f0;
+}
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    margin-bottom: 20px;
+    height: 70px;
+    width: 100%;
+    background-color: #f2f2f0;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.10);
+}
+
+.nav>.nav-header {
+    height:100%;
+    display: inline-block;
+}
+
+.nav>.nav-header>.nav-title {
+    vertical-align: middle;
+    display: inline-block;
+    font-size: 22px;
+    color: #fff;
+    padding: 10px 10px 10px 10px;
+}
+
+#imagenLogo{
+    vertical-align: middle;
+    height:100%;
+    display:inline-block;
+    margin:auto;
+}
+
+.nav>.nav-btn {
+    margin-top:9px;
+    margin-right:5px;
+    display: none;
+}
+
+.nav>.nav-links {
+    font-size: 18px;
+}
+
+.contFotoPerfil{
+    padding:-10px;
+}
+
+.fotoPerfil{
+    width:60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.nav>.nav-links>a {
+    display:inline-block;
+    vertical-align:middle;
+    text-align: center;
+    padding: 10px 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.linkHover:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+
+.nav>#nav-check {
+    display: none;
+}
+
+input {
+    margin-left: 20px;
+    margin-top: 10px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #f2f2f0;
+    border-color: black;
+    border-color: 5px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.iconoBusqueda{
+    color:black;
+    vertical-align: middle;
+}
+
+@media (max-width:800px) {
+    .nav>.nav-btn {
+        display: inline-block;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+    }
+
+    .nav>.nav-btn>label {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        padding: 13px;
+    }
+
+    .nav>.nav-btn>label:hover,
+    .nav #nav-check:checked~.nav-btn>label {
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .nav>.nav-btn>label>span {
+        display: block;
+        width: 25px;
+        height: 10px;
+        border-top: 2px solid #eee;
+    }
+
+    .nav>.nav-links {
+        position: absolute;
+        width: 100%;
+        background-color: rgb(221, 219, 219);
+        transition: all 0.3s ease-in;
+        overflow-y: hidden;
+        top: 20px;
+        left: 0px;
+        margin:auto;
+        margin-top: 60px;
+    }
+
+    .nav>.nav-links>a {
+        display: block;
+        width: 100%;
+    }
+
+    .nav>#nav-check:not(:checked)~.nav-links {
+        height: 0px;
+    }
+
+    .nav>#nav-check:checked~.nav-links {
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 540px) {
+    .nav{
+        height: 70px;
+    }
+    #imagenLogo{
+        display: block;
+    }
+    input{
+        margin-top: 20px;
+        margin-left: 0px;
+    }
+    #divMayor{
+        height: 120px;
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.10);
+    }
+    .nav{
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.10);
+    }
+
+    .nav>.nav-links {
+        top: 70px;
+    }
+}
+
+.nav-title:hover{
+    cursor:pointer;
+}

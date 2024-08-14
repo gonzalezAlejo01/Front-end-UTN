@@ -1,0 +1,143 @@
+p {
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.evento>li {
+    cursor: pointer;
+    list-style-type: none;
+    transition: 0.3s;
+}
+
+.evento>li:hover {
+    transition: 0.3s;
+    scale: 1.05;
+}
+
+body {
+    margin: 0;
+}
+
+.eventos {
+    text-align: center;
+    width: 90vw;
+    margin: 0 5vw;
+}
+
+.evento {
+    display: inline-block;
+    width: 450px;
+    margin: 1vw;
+}
+
+.bordeEvento {
+    height: 200px;
+    display: flex;
+    border: solid black 3px;
+}
+
+.contImagen {
+    margin: 0;
+    display: inline-block;
+    border-right: black solid 3px;
+}
+
+.imgEvento {
+    display: inline-block;
+    height: 200px;
+    width: 200px;
+    vertical-align: middle;
+}
+
+.infoEvento {
+    min-width: 60%;
+    max-width: 100%;
+    font-size: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0;
+    padding: 1px;
+}
+
+.contInfo {
+    max-height: 170px;
+    overflow: hidden;
+    text-align: left;
+    padding: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: auto;
+}
+
+.tags {
+    margin-bottom: 15px;
+    padding: 5px 0;
+    padding-bottom: 10px;
+    display: flex;
+    overflow-x: auto;
+    text-align: center;
+    scrollbar-width: thin;
+}
+
+.tags::-webkit-scrollbar {
+    height: 9px;
+}
+
+.tags::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.tags::-webkit-scrollbar-thumb {
+    background-color: rgba(155, 155, 155, 0.5);
+    border-radius: 20px;
+    border: transparent;
+}
+
+.liTag {
+    list-style-type: none;
+    margin: 0px 5px;
+    display: inline-block;
+}
+
+.bullet {
+    display: list-item;
+    list-style-type: square;
+    list-style-position: inside;
+}
+
+.tag {
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: transparent;
+    border: black solid 1px;
+    transition: 0.3s;
+}
+
+.tag:hover {
+    cursor: pointer;
+    transition: 0.3s;
+    scale: 1.1;
+}
+
+#botonCarga {
+    border: solid 2px black;
+    border-radius: 15px;
+    font-size: 24px;
+    width: 120px;
+    height: 36px;
+}
+
+@media(max-width:525px) {
+    .evento {
+        width: 90vw;
+    }
+
+    .imgEvento {
+        width: 40vw;
+    }
+
+    .infoEvento {
+        max-width: 47vw;
+        min-width: 30vw;
+    }
+}

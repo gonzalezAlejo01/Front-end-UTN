@@ -1,0 +1,32 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <app-navbar (actualizar)="update()"></app-navbar>
+    <div class="tags" (wheel)="onMouseWheel($event)">
+        <li *ngFor="let tag of tags; let i=index" [attr.data-index]="i" class="liTag">
+            <button class="tag" (click)="sumarTag(tags[i])">{{tags[i]}}</button>
+        </li>
+    </div>
+    <div class="eventos">
+        <div *ngFor="let item of eventos; let i = index" [attr.data-index]="i" class="evento">
+            <li [routerLink]="['/evento', eventos[i]._id]" #idPublicacion value="eventos[i].id" list-style-type="none">
+                <div class="bordeEvento">
+                    <div class="contImagen">
+                        <img src="{{eventos[i].fotoLugar}}" class="imgEvento">
+                    </div>
+                    <div class="contInfo">
+                        <p class="infoEvento">{{eventos[i].nombre}}</p>
+                        <p class="infoEvento">{{eventos[i].fecha}}</p>
+                        <p class="infoEvento">{{eventos[i].nombreLugar}}</p>
+                        <div *ngFor="let tag of eventos[i].tags; let j = index" [attr.data-index]="j">
+                            <p class="infoEvento bullet">{{eventos[i].tags[j]}}</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </div><br>
+        <button *ngIf="hayMas" (click)="cargarMas()" id="botonCarga">Ver más</button>
+    </div>
+</body>

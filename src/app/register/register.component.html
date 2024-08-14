@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="register-container">
+        <div class="register">
+            <p id="title">Registro de cuenta</p>
+            <input #name id="nombre" placeholder="Nombre">
+            <input #mail id="mail" placeholder="Correo" type="email">
+            <input #pw1 id="pw1" class="pw" placeholder="Contraseña" type="password">
+            <input #pw2 id="pw2" class="pw" placeholder="Repita la contraseña" type="password">
+            <div>
+                <button id="btn" style="margin-right:0" (click)="register(mail.value, pw1.value, pw2.value, name.value)">Registrarse</button>
+                <button id="btn" style="margin-left:0" routerLink="/login">¿Ya tenés cuenta?</button>
+            </div>
+            <p id="error" style="color: red;">{{error}}</p>
+        </div>
+    </div>
+</body>
+
+</html>

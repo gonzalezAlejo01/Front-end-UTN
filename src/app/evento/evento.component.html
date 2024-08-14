@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <app-navbar></app-navbar>
+    <div id="overlay" class="overlay" *ngIf="menuAporte">
+        <div class="contAporte">
+            <h2>Ingreso de aportes</h2>
+            <textarea #tituloAporte id="inputTitulo" placeholder="Título del aporte"></textarea><br>
+            <textarea #descAporte id="inputDescripcion" placeholder="Descripción del aporte"></textarea>
+            <p class="textoAporte">Para presentar su aporte al evento, adjunte un archivo .pdf que lo detalle</p>
+            <input type="file" accept=".pdf" id="inputAporte" #inputAporte class="inputAporte"placeholder="Seleccione el archivo sobre su aporte" (change)="onFileSelected($event)">
+            <button (click)="enviarAporte(inputAporte.value, tituloAporte.value, descAporte.value)">Enviar</button>
+            <button (click)="manejarMenuAporte(false)">Cerrar</button>
+            <p class="error">{{error}}</p>
+            <p class="success" *ngIf="success">Se subió con éxito</p>
+        </div>
+    </div>
+
+    <div id="todo">
+        <div id="fotoDatos">
+            <img id="foto" src="{{fotoLugar}}" alt="">
+            <div id="datos">
+                <h2 class="textoDatos">{{nombre}}</h2>
+                <h3 class="textoDatos">Fecha del evento: {{fecha}}</h3>
+                <h4 class="textoDatos">{{nombreLugar}}</h4>
+                <h4 class="textoDatos">Direccion: {{direccion}}</h4>
+            </div>
+        </div>
+        <div id="tags">
+            <button *ngFor="let tag of tags; let i = index" [attr.data-index]="i" class="contTag"
+                (click)="buscarConTag(tags[i])">
+                <h5 id="tag">{{tag}}</h5>
+            </button>
+        </div>
+        <p id="descripcion">{{descripcion}}</p>
+        <div id="cierreAportar">
+            <p id="cierre">Cierre aporte: {{fechaConvocatoria}}</p>
+            <div style="display: flex; padding-right: 10px;">
+                <p *ngIf="click" id="errorLogin">Inicie sesion</p>
+                <button *ngIf="logeado" (click)="manejarMenuAporte(true)" id="aportar">Aportar</button>
+                <button (click)="click = true" *ngIf="!logeado" id="noAportar">Aportar</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
